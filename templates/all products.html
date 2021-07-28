@@ -1,0 +1,55 @@
+{%extends "base.html"%} {%block title %} All Products {%endblock%} {%block
+content%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/styles/style.css" />
+    <link rel="stylesheet" href="/static/styles/pretty-checkbox.min.css" />
+    <title>All Products</title>
+  </head>
+  <body>
+    <div class="my-form container p-5 my-5 rounded border border-warning">
+      <form>
+        <h2 class="text-center">All Products</h2>
+        <hr />
+
+        <section>
+          <div class="container-fluid">
+            <div class="row p-5">
+              <!--  -->
+              {% for item in items %}
+              <div>
+                <div class="card m-2" style="width: 18rem">
+                  <img src="{{ item['img']}}" class="card-img-top" alt="..." />
+                  <div class="card-body">
+                    <h5 class="card-title">{{item['name']}}</h5>
+                    <p
+                      class="card-text"
+                      style="
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 2000px;
+                      "
+                    >
+                      {{item['description']}}
+                    </p>
+                    <a href="/product/{{item['id']}}" class="btn btn-warning"
+                      >Show Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+              {%endfor %}
+              <!--  -->
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock %}
