@@ -7,8 +7,5 @@ coffe = Blueprint("coffe", __name__)
 
 @coffe.route("/coffe", methods=["GET", "POST"])
 def main():
-    if "loggedin" in session:
-        loggedin = True
-    else:
-        loggedin = False
+    loggedin = "loggedin" in session
     return render_template("coffe.html", loggedin=loggedin, active="coffee")

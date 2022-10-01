@@ -8,10 +8,7 @@ all_products = Blueprint("all_products", __name__)
 
 @all_products.route("/all-products", methods=["GET", "POST"])
 def main():
-    if "loggedin" in session:
-        loggedin = True
-    else:
-        loggedin = False
+    loggedin = "loggedin" in session
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM items ORDER BY id DESC")
     items = cur.fetchall()

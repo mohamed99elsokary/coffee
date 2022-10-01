@@ -8,10 +8,7 @@ product = Blueprint("product", __name__)
 
 @product.route("/product/<int:page_id>", methods=["GET", "POST"])
 def main(page_id):
-    if "loggedin" in session:
-        loggedin = True
-    else:
-        loggedin = False
+    loggedin = "loggedin" in session
     id = page_id
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM items Where id = %s", (id,))
