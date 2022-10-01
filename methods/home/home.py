@@ -8,9 +8,7 @@ home = Blueprint("home", __name__)
 
 @home.route("/", methods=["GET", "POST"])
 def main():
-    loggedin = False
-    if "loggedin" in session:
-        loggedin = True
+    loggedin = "loggedin" in session
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM items ORDER BY id DESC LIMIT 8")
     items = cur.fetchall()

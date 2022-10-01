@@ -7,8 +7,5 @@ about = Blueprint("about", __name__)
 
 @about.route("/about", methods=["GET", "POST"])
 def main():
-    if "loggedin" in session:
-        loggedin = True
-    else:
-        loggedin = False
+    loggedin = "loggedin" in session
     return render_template("about.html", loggedin=loggedin, active="about")
